@@ -1,0 +1,379 @@
+/* Parslee Brand Colors:
+   - Emerald: #00A991 (primary)
+   - Navy: #091B35 (dark)
+   - Teal: #2CA6A4
+   - Cyan: #3FE0DE (accent)
+   - Forest: #1C5D3F
+*/
+
+.welcome-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #091B35 0%, #0d2847 50%, #1C5D3F 100%);
+  position: relative;
+}
+
+/* Subtle grid pattern overlay */
+.welcome-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 169, 145, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 169, 145, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.welcome-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+
+.welcome-card {
+  max-width: 600px;
+  width: 100%;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 169, 145, 0.1);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.welcome-logo {
+  height: 50px;
+  width: auto;
+}
+
+/* Parslee text logo styling */
+.welcome-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-brand-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #00A991 0%, #2CA6A4 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 169, 145, 0.3);
+}
+
+.welcome-brand-icon svg {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+
+.welcome-brand-text {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00A991 0%, #2CA6A4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.welcome-intro {
+  text-align: center;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.welcome-divider {
+  margin: 1.5rem 0;
+  border-color: rgba(0, 169, 145, 0.15);
+}
+
+/* Subscription Details */
+.subscription-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.detail-row {
+  display: flex;
+  gap: 2rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex: 1;
+  padding: 1rem;
+  background: rgba(0, 169, 145, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 169, 145, 0.1);
+}
+
+.detail-item svg {
+  color: #00A991;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.detail-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Pricing Section */
+.pricing-info {
+  background: linear-gradient(135deg, rgba(0, 169, 145, 0.08) 0%, rgba(44, 166, 164, 0.05) 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(0, 169, 145, 0.15);
+}
+
+.pricing-info h3 {
+  margin-bottom: 1rem;
+  color: #091B35;
+}
+
+.price-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.price-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-line.total {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+.price-line.total h3 {
+  color: #00A991;
+  margin: 0;
+}
+
+.pricing-note {
+  margin-top: 1rem;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* Terms Section */
+.terms-section {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.terms-section a {
+  color: #00A991;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-section a:hover {
+  text-decoration: underline;
+  color: #2CA6A4;
+}
+
+/* Actions */
+.welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.welcome-actions button {
+  width: 100%;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Override Fluent primary button with Parslee brand */
+.welcome-actions button[class*="primary"] {
+  background: linear-gradient(135deg, #00A991 0%, #2CA6A4 100%) !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(0, 169, 145, 0.4) !important;
+}
+
+.welcome-actions button[class*="primary"]:hover {
+  background: linear-gradient(135deg, #00997f 0%, #259c9a 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(0, 169, 145, 0.5) !important;
+}
+
+.welcome-actions button[class*="secondary"] {
+  background: transparent !important;
+  border: 2px solid rgba(0, 169, 145, 0.3) !important;
+  color: #091B35 !important;
+}
+
+.welcome-actions button[class*="secondary"]:hover {
+  background: rgba(0, 169, 145, 0.1) !important;
+  border-color: #00A991 !important;
+}
+
+/* Success Card */
+.success-card .welcome-header {
+  color: #00A991;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  color: #00A991;
+}
+
+.success-message {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #4a5568;
+}
+
+.activation-details {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 1.5rem 0;
+}
+
+.activation-details .detail-item {
+  background: rgba(0, 169, 145, 0.08);
+}
+
+.next-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 169, 145, 0.05);
+  border-radius: 12px;
+}
+
+.next-step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.next-step svg {
+  color: #00A991;
+}
+
+/* Error Card */
+.error-card .welcome-header {
+  color: #dc2626;
+}
+
+.error-icon {
+  width: 72px;
+  height: 72px;
+  color: #dc2626;
+}
+
+.error-message {
+  text-align: center;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+}
+
+/* Activation Progress */
+.activation-progress {
+  margin-top: 1.5rem;
+}
+
+/* Custom spinner color */
+.welcome-loading [class*="Spinner"] {
+  color: #3FE0DE;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .welcome-container {
+    padding: 1rem;
+  }
+
+  .welcome-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .activation-details {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .welcome-brand-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-card {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Glow effect on card */
+.welcome-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(0, 169, 145, 0.2), rgba(63, 224, 222, 0.1));
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.welcome-card:hover::before {
+  opacity: 1;
+}

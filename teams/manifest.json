@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "parslee-dashboard-app-id",
+  "packageName": "com.parslee.dashboard",
+  "developer": {
+    "name": "Parslee",
+    "websiteUrl": "https://parslee.ai",
+    "privacyUrl": "https://parslee.ai/privacy",
+    "termsOfUseUrl": "https://parslee.ai/terms"
+  },
+  "name": {
+    "short": "Parslee Dashboard",
+    "full": "Parslee AI Employee Dashboard"
+  },
+  "description": {
+    "short": "Real-time dashboard for Parslee AI employees",
+    "full": "Monitor AI employee status, token usage, system health, and business metrics for your organization"
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#0078D4",
+  "staticTabs": [
+    {
+      "entityId": "parslee-dashboard",
+      "name": "Dashboard",
+      "contentUrl": "https://{{DOMAIN}}/dashboard",
+      "scopes": ["team"]
+    }
+  ],
+  "permissions": ["identity", "messageTeamMembers"],
+  "validDomains": ["{{DOMAIN}}"]
+}

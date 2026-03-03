@@ -1,0 +1,64 @@
+# Icon Placeholders
+
+This directory requires two icon files for the Teams app manifest:
+
+## color.png
+- Size: 192x192 pixels
+- Format: PNG with transparency support
+- Purpose: Full-color app icon for Teams catalog and installation dialogs
+- Design: Use Parslee branding with white or transparent background
+- Color depth: 24-bit or 32-bit (with alpha channel)
+
+## outline.png
+- Size: 32x32 pixels
+- Format: PNG with transparency support
+- Purpose: Monochrome outline icon for Teams left rail and tab headers
+- Design: Single-color silhouette (white or black) with transparent background
+- Requirements: High-contrast for visibility in both light and dark themes
+
+## Creating Icons
+
+### Using Design Tools
+- Adobe Illustrator / Photoshop
+- Figma / Sketch
+- Canva (free tier supports custom dimensions)
+
+### Online Icon Generators
+- https://www.favicon-generator.org/ (supports custom sizes)
+- https://realfavicongenerator.net/
+
+### Command-line Tools
+```bash
+# Resize existing logo to 192x192 (requires ImageMagick)
+convert logo.png -resize 192x192 color.png
+
+# Create outline version at 32x32
+convert logo.png -resize 32x32 -threshold 50% -negate outline.png
+```
+
+## Validation
+
+After creating icons:
+
+1. Verify dimensions:
+```bash
+file color.png outline.png
+# Expected output:
+# color.png: PNG image data, 192 x 192, ...
+# outline.png: PNG image data, 32 x 32, ...
+```
+
+2. Check file size:
+```bash
+ls -lh *.png
+# Recommended: color.png < 50KB, outline.png < 10KB
+```
+
+3. Package and validate:
+```bash
+zip -r ../parslee-dashboard.zip manifest.json color.png outline.png
+# Teams Admin Center will validate icons during upload
+```
+
+## References
+- [Teams App Icons Guidelines](https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/apps-package#app-icons)

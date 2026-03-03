@@ -1,0 +1,56 @@
+name: Deploy Admin Dashboard
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    outputs:
+      image-tag: ${{ steps.tag.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: tag
+        run: echo "sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - run: az acr login --name parsleaieus2
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: parsleaieus2.azurecr.io/admin-dashboard:${{ steps.tag.outputs.sha }}
+          build-args: |
+            VITE_API_BASE_URL=/api/v1
+
+  deploy:
+    needs: build-push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - run: |
+          az containerapp update \
+            --name ca-admin-dashboard-prod \
+            --resource-group parslee-aie-prod-eastus2 \
+            --image parsleaieus2.azurecr.io/admin-dashboard:${{ needs.build-push.outputs.image-tag }}
+      - name: Health check
+        run: |
+          FQDN=$(az containerapp show --name ca-admin-dashboard-prod --resource-group parslee-aie-prod-eastus2 --query "properties.configuration.ingress.fqdn" -o tsv)
+          for i in {1..12}; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://${FQDN}/health")
+            if [ "$STATUS" -eq "200" ]; then echo "Healthy at https://${FQDN}"; exit 0; fi
+            echo "Attempt $i: $STATUS"; sleep 10
+          done
+          echo "Health check failed"; exit 1

@@ -1,0 +1,222 @@
+.sign-in-options-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+  padding: 24px;
+}
+
+.sign-in-options-card {
+  max-width: 900px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.success-message {
+  margin-bottom: 24px;
+}
+
+.sign-in-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.sign-in-header h1 {
+  margin-bottom: 8px;
+  color: #242424;
+}
+
+.sign-in-paths {
+  display: flex;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.path-divider {
+  display: flex;
+  align-items: center;
+  color: #707070;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sign-in-path {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: 12px;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  transition: all 0.2s ease;
+}
+
+.sign-in-path:hover {
+  border-color: #0078d4;
+  box-shadow: 0 4px 16px rgba(0, 120, 212, 0.1);
+}
+
+.individual-path:hover {
+  border-color: #107c10;
+  box-shadow: 0 4px 16px rgba(16, 124, 16, 0.1);
+}
+
+.path-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+.individual-path .path-icon {
+  background: linear-gradient(135deg, #107c10 0%, #1a9f1a 100%);
+  color: white;
+}
+
+.organization-path .path-icon {
+  background: linear-gradient(135deg, #0078d4 0%, #1890ff 100%);
+  color: white;
+}
+
+.path-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.path-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.path-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.path-description {
+  color: #424242;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.permissions-preview {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #e8e8e8;
+}
+
+.permissions-preview > span {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #424242;
+}
+
+.permission-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.permission-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #424242;
+  font-size: 14px;
+}
+
+.permission-list li svg {
+  color: #0078d4;
+  flex-shrink: 0;
+}
+
+.individual-path .permission-list li svg {
+  color: #107c10;
+}
+
+.sign-in-button {
+  margin-top: auto;
+  width: 100%;
+  height: 44px;
+  font-size: 16px;
+}
+
+.consent-note {
+  margin-top: 12px;
+  text-align: center;
+  color: #707070;
+  font-size: 13px;
+}
+
+.admin-faq {
+  margin-top: 12px;
+}
+
+.admin-faq button {
+  font-size: 13px;
+  color: #0078d4;
+}
+
+.verification-notice {
+  margin-top: 32px;
+}
+
+.help-section {
+  margin-top: 24px;
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.help-section a {
+  color: #0078d4;
+  text-decoration: none;
+}
+
+.help-section a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sign-in-options-card {
+    padding: 24px;
+  }
+
+  .sign-in-paths {
+    flex-direction: column;
+  }
+
+  .path-divider {
+    width: 100%;
+    flex-direction: row;
+    margin: 16px 0;
+  }
+
+  .path-divider::before,
+  .path-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 0 12px;
+  }
+}
