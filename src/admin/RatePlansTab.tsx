@@ -341,7 +341,7 @@ function RatePlansTab({ getAccessToken }: RatePlansTabProps) {
               <TableRow
                 key={plan.id}
                 className="clickable-row"
-                onClick={() => { window.location.href = `/dashboard/admin/rate-plans/${plan.id}`; }}
+                onClick={() => { window.location.href = `/admin/rate-plans/${plan.id}`; }}
                 style={{ cursor: 'pointer' }}
               >
                 <TableCell>{plan.name}</TableCell>

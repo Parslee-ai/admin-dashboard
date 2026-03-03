@@ -161,7 +161,7 @@ function RatePlanDetailPage() {
     return <Badge appearance="filled" color={colors[status] || 'informative'}>{status}</Badge>;
   };
 
-  const handleBack = () => { window.location.href = '/dashboard/admin'; };
+  const handleBack = () => { window.location.href = '/admin'; };
 
   if (!isAuthenticated) {
     return (

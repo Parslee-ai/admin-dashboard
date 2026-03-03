@@ -169,7 +169,7 @@ function SubscriptionDetailPage() {
     return <Badge appearance="filled" color={colors[status] || 'informative'}>{status}</Badge>;
   };
 
-  const handleBack = () => { window.location.href = '/dashboard/admin'; };
+  const handleBack = () => { window.location.href = '/admin'; };
 
   if (!isAuthenticated) {
     return (
@@ -232,7 +232,7 @@ function SubscriptionDetailPage() {
                 <Button
                   icon={<Open24Regular />}
                   appearance="subtle"
-                  onClick={() => { window.location.href = `/dashboard/admin/orgs/${sub.organizationId}`; }}
+                  onClick={() => { window.location.href = `/admin/orgs/${sub.organizationId}`; }}
                 >
                   View Org
                 </Button>
@@ -295,7 +295,7 @@ function SubscriptionDetailPage() {
                     <span className="info-value">
                       {sub.organizationId ? (
                         <a
-                          href={`/dashboard/admin/orgs/${sub.organizationId}`}
+                          href={`/admin/orgs/${sub.organizationId}`}
                           style={{ color: 'var(--parslee-emerald)' }}
                         >
                           {sub.organizationId}

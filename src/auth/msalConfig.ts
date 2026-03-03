@@ -9,8 +9,8 @@ export const msalConfig: Configuration = {
     // Parslee M365 tenant
     authority: 'https://login.microsoftonline.com/4535fc14-827e-4939-8416-bcb4260cbc23',
     // Redirect back to the admin dashboard after login
-    redirectUri: window.location.origin + '/dashboard/admin',
-    postLogoutRedirectUri: window.location.origin + '/dashboard',
+    redirectUri: window.location.origin + '/admin',
+    postLogoutRedirectUri: window.location.origin + '/',
     // Don't navigate away after handling redirect - stay on current page
     navigateToLoginRequestUrl: false,
   },

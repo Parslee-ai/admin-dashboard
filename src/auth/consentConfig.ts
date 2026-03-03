@@ -24,11 +24,11 @@ export const CONSENT_REDIRECT_URIS = {
   // Individual user consent - back to settings page
   individual: `${window.location.origin}/settings`,
   // Admin consent - back to onboarding success
-  adminConsent: `${window.location.origin}/dashboard/getting-started`,
+  adminConsent: `${window.location.origin}/getting-started`,
   // Production URLs
   production: {
     individual: 'https://app.parslee.ai/settings',
-    adminConsent: 'https://app.parslee.ai/dashboard/getting-started',
+    adminConsent: 'https://app.parslee.ai/getting-started',
   },
 };
 

@@ -101,7 +101,7 @@ function OrganizationsTab({ getAccessToken }: OrganizationsTabProps) {
   };
 
   const handleViewDetails = (org: AdminOrganization) => {
-    window.location.href = `/dashboard/admin/orgs/${org.id}`;
+    window.location.href = `/admin/orgs/${org.id}`;
   };
 
   const handleReactivate = async (org: AdminOrganization) => {

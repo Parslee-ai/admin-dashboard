@@ -580,7 +580,7 @@ function AdminDashboard() {
                 <tr
                   key={sub.id}
                   className="clickable-row"
-                  onClick={() => { window.location.href = `/dashboard/admin/subscriptions/${sub.id}`; }}
+                  onClick={() => { window.location.href = `/admin/subscriptions/${sub.id}`; }}
                 >
                   <td title={sub.beneficiaryEmail || ''}>{sub.beneficiaryEmail || '-'}</td>
                   <td title={sub.organizationId || ''}>{sub.organizationId || 'Not activated'}</td>

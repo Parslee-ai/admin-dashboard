@@ -57,7 +57,7 @@ root.render(
   <React.StrictMode>
     <ErrorBoundary>
       <AuthProvider>
-        <BrowserRouter basename="/dashboard">
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/billing" element={<BillingPage />} />

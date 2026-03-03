@@ -82,7 +82,7 @@ function BillingPage() {
 
   const handleLogout = () => {
     instance.logoutRedirect({
-      postLogoutRedirectUri: window.location.origin + '/dashboard',
+      postLogoutRedirectUri: window.location.origin + '/',
     });
   };
 

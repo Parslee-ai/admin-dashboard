@@ -318,7 +318,7 @@ function OrgDetailPage() {
   };
 
   const handleBack = () => {
-    window.location.href = '/dashboard/admin';
+    window.location.href = '/admin';
   };
 
   if (!isAuthenticated) {

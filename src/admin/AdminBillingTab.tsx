@@ -493,7 +493,7 @@ function AdminBillingTab({ getAccessToken }: AdminBillingTabProps) {
               <TableRow
                 key={org.id}
                 className="clickable-row"
-                onClick={() => { window.location.href = `/dashboard/admin/orgs/${org.id}`; }}
+                onClick={() => { window.location.href = `/admin/orgs/${org.id}`; }}
                 style={{ cursor: 'pointer' }}
               >
                 <TableCell>{org.displayName || org.name}</TableCell>

@@ -46,7 +46,7 @@ function App() {
   // Handle logout via MSAL
   const handleLogout = () => {
     instance.logoutRedirect({
-      postLogoutRedirectUri: window.location.origin + '/dashboard',
+      postLogoutRedirectUri: window.location.origin + '/',
     });
   };
 
@@ -159,7 +159,7 @@ function App() {
         </div>
         <Button
           as="a"
-          href="/dashboard/billing"
+          href="/billing"
           appearance="subtle"
           icon={<Money24Regular />}
         >
