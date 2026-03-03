@@ -4,7 +4,7 @@
 
 // Parameters
 param location string = 'eastus2'
-param environmentName string = 'icybay-fc58ec2f'
+param environmentName string = 'parslee-aie-env-eastus2'
 param containerAppName string = 'ca-admin-dashboard-prod'
 param identityName string = 'id-admin-dashboard-prod'
 param acrName string = 'parsleaieus2'
@@ -62,7 +62,7 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
       activeRevisionsMode: 'Single'
       ingress: {
         external: true
-        targetPort: 80
+        targetPort: 8080
         transport: 'http'
       }
       registries: [
@@ -84,13 +84,13 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
           probes: [
             {
               type: 'Liveness'
-              httpGet: { path: '/health', port: 80 }
+              httpGet: { path: '/health', port: 8080 }
               initialDelaySeconds: 5
               periodSeconds: 30
             }
             {
               type: 'Readiness'
-              httpGet: { path: '/health', port: 80 }
+              httpGet: { path: '/health', port: 8080 }
               initialDelaySeconds: 3
               periodSeconds: 10
             }
