@@ -35,12 +35,20 @@ interface OrganizationsTabProps {
   getAccessToken: () => Promise<string | null>;
 }
 
+export const formatTokens = (value: number | null | undefined): string => {
+  if (value == null) return '-';
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
+  return String(value);
+};
+
 function OrganizationsTab({ getAccessToken }: OrganizationsTabProps) {
   const [summary, setSummary] = useState<OrganizationSummary | null>(null);
   const [organizations, setOrganizations] = useState<AdminOrganization[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('');
 
   const fetchSummary = useCallback(async () => {
@@ -62,7 +70,7 @@ function OrganizationsTab({ getAccessToken }: OrganizationsTabProps) {
       const response = await adminApi.listOrganizations(
         token,
         statusFilter || undefined,
-        searchTerm || undefined,
+        debouncedSearchTerm || undefined,
         0,
         100
       );
@@ -84,16 +92,24 @@ function OrganizationsTab({ getAccessToken }: OrganizationsTabProps) {
     } finally {
       setLoading(false);
     }
-  }, [getAccessToken, statusFilter, searchTerm]);
+  }, [getAccessToken, statusFilter, debouncedSearchTerm]);
 
   useEffect(() => {
     fetchSummary();
-    fetchOrganizations();
   }, []);
 
   useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearchTerm(searchTerm), 300);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+
+  useEffect(() => {
     fetchOrganizations();
-  }, [statusFilter, searchTerm]);
+  }, [statusFilter]);
+
+  useEffect(() => {
+    fetchOrganizations();
+  }, [debouncedSearchTerm]);
 
   const handleRefresh = () => {
     fetchSummary();
@@ -240,6 +256,7 @@ function OrganizationsTab({ getAccessToken }: OrganizationsTabProps) {
           </Select>
         </div>
 
+        <div style={{ overflowX: 'auto' }}>
         <Table>
           <TableHeader>
             <TableRow>
@@ -247,6 +264,9 @@ function OrganizationsTab({ getAccessToken }: OrganizationsTabProps) {
               <TableHeaderCell>ID</TableHeaderCell>
               <TableHeaderCell>Status</TableHeaderCell>
               <TableHeaderCell>AIEs</TableHeaderCell>
+              <TableHeaderCell>Token Balance</TableHeaderCell>
+              <TableHeaderCell>Tokens Used</TableHeaderCell>
+              <TableHeaderCell>Tokens Granted</TableHeaderCell>
               <TableHeaderCell>Spend</TableHeaderCell>
               <TableHeaderCell>Created</TableHeaderCell>
               <TableHeaderCell>Actions</TableHeaderCell>
@@ -264,6 +284,9 @@ function OrganizationsTab({ getAccessToken }: OrganizationsTabProps) {
                 <TableCell><code>{org.id}</code></TableCell>
                 <TableCell>{getStatusBadge(org.status)}</TableCell>
                 <TableCell>{org.subscribedEmployeeCount}</TableCell>
+                <TableCell>{formatTokens(org.tokenBalance)}</TableCell>
+                <TableCell>{formatTokens(org.totalTokensConsumed)}</TableCell>
+                <TableCell>{formatTokens(org.totalTokensGranted)}</TableCell>
                 <TableCell>{formatCurrency(org.currentMonthSpend)}</TableCell>
                 <TableCell>{formatDate(org.createdAt)}</TableCell>
                 <TableCell onClick={e => e.stopPropagation()}>
@@ -282,6 +305,7 @@ function OrganizationsTab({ getAccessToken }: OrganizationsTabProps) {
             ))}
           </TableBody>
         </Table>
+        </div>
       </div>
     </div>
   );

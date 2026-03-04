@@ -184,6 +184,9 @@ export interface AdminOrganization {
   suspensionReason: string | null;
   settings: AdminOrganizationSettings;
   productRatePlanIds: Record<string, string>;
+  tokenBalance: number | null;
+  totalTokensGranted: number | null;
+  totalTokensConsumed: number | null;
 }
 
 export interface AdminOrganizationSettings {
